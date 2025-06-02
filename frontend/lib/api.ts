@@ -1,17 +1,14 @@
+import { Transaction } from '@/types/transaction';
+
 const BASE_URL = 'http://localhost:5000/api'; // Your Express backend
 
-export async function getTransactions() {
+export async function getTransactions(): Promise<Transaction[]> {
   const res = await fetch(`${BASE_URL}/transactions`);
   if (!res.ok) throw new Error('Failed to fetch transactions');
   return res.json();
 }
 
-export async function postTransaction(data: {
-  description: string;
-  category: string;
-  amount: number;
-  date: string;
-}) {
+export async function postTransaction(data: Omit<Transaction, 'id'>): Promise<Transaction> {
   const res = await fetch(`${BASE_URL}/transactions`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
