@@ -1,6 +1,6 @@
 import { Transaction } from '@/types/transactions';
 
-const BASE_URL = 'http://localhost:5000/api'; // Your Express backend
+const BASE_URL = 'https://mint-2-0.onrender.com/api'; // Your Express backend
 
 export async function getTransactions(): Promise<Transaction[]> {
   const res = await fetch(`${BASE_URL}/transactions`);
