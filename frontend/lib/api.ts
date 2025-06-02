@@ -1,4 +1,4 @@
-import { Transaction } from '@/types/transaction';
+import { Transaction } from '@/types/transactions';
 
 const BASE_URL = 'http://localhost:5000/api'; // Your Express backend
 

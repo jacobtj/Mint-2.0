@@ -3,11 +3,10 @@
 import { useEffect, useState } from 'react';
 import { getTransactions } from '@/lib/api';
 import Link from 'next/link';
-import { Transaction } from '@/types/transaction';
+import { Transaction } from '@/types/transactions';
 
 export default function TransactionsPage() {
   const [transactions, setTransactions] = useState<Transaction[]>([]);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     getTransactions()
