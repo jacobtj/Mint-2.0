@@ -52,7 +52,7 @@ export default function TransactionsPage() {
       </Link>
 
       <ul className="w-full max-w-2xl space-y-3">
-        {transactions.map((t: any) => (
+        {transactions.map((t) => (
           <li key={t.id} className="flex justify-between items-center bg-white p-4 rounded-lg shadow-sm border">
             <div>
                 <p className="font-semibold text-sm text-gray-500">{t.description}</p>  
