@@ -4,8 +4,17 @@ import { useEffect, useState } from 'react';
 import { getTransactions } from '@/lib/api';
 import Link from 'next/link';
 
+interface Transaction {
+  id: number;
+  description: string;
+  category: string;
+  amount: number;
+  date: string;
+}
+
 export default function TransactionsPage() {
-  const [transactions, setTransactions] = useState([]);
+  const [transactions, setTransactions] = useState<Transaction[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     getTransactions()
