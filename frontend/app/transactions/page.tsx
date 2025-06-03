@@ -1,30 +1,60 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { getTransactions } from '@/lib/api';
+import { getTransactions, deleteTransaction } from '@/lib/api';
 import Link from 'next/link';
 import { Transaction } from '@/types/transactions';
 
 export default function TransactionsPage() {
   const [transactions, setTransactions] = useState<Transaction[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    getTransactions()
-      .then(setTransactions)
-      .catch(err => console.error('Error fetching transactions:', err));
+     const fetchWithRetry = async (retries = 3, delay = 3000) => {
+      try {
+        const data = await getTransactions();
+        setTransactions(data);
+        setLoading(false);
+      } catch (err) {
+        if (retries > 0) {
+          console.warn(`Retrying... (${3 - retries + 1})`);
+          setTimeout(() => fetchWithRetry(retries - 1, delay), delay);
+        } else {
+          console.error('Error fetching transactions:', err);
+          setError('Failed to load transactions. Please try again later.');
+          setLoading(false);
+        }
+      }
+    };
+
+    fetchWithRetry();
   }, []);
 
   const handleDelete = async (id: number) => {
-    const res = await fetch(`http://localhost:5000/api/transactions/${id}`, {
-      method: 'DELETE',
-    });
-
-    if (res.ok) {
-      setTransactions((prev) => prev.filter((t) => t.id !== id));
-    } else {
-      console.error('Failed to delete transaction');
+    try {
+      await deleteTransaction(id);
+      setTransactions((prev) => prev.filter((t) => t.id != id));
+    } catch (err) {
+      console.error(err);
     }
   };
+
+  if (loading) {
+    return (
+      <main className="min-h-screen p-8 bg-gray-50 flex flex-col items-center justify-center">
+        <p className="text-gray-600 text-lg">Loading transactions... (Server may be waking up)</p>
+      </main>
+    );
+  }
+
+  if (error) {
+    return (
+      <main className="min-h-screen p-8 bg-gray-50 flex flex-col items-center justify-center">
+        <p className="text-red-600 text-lg">{error}</p>
+      </main>
+    );
+  }
 
   return (
     <main className="min-h-screen p-8 bg-gray-50 flex flex-col items-center">

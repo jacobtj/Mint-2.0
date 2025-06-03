@@ -18,3 +18,11 @@ export async function postTransaction(data: Omit<Transaction, 'id'>): Promise<Tr
   if (!res.ok) throw new Error('Failed to create transaction');
   return res.json();
 }
+
+export async function deleteTransaction(id: number) {
+  const res = await fetch(`${BASE_URL}/transactions/${id}`, {
+    method: 'DELETE',
+  });
+
+  if (!res.ok) throw new Error('Failed to delete transaction');
+}
