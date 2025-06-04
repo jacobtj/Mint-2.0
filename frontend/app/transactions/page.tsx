@@ -78,7 +78,7 @@ export default function TransactionsPage() {
           <li key={t.id} className="flex justify-between items-center bg-white p-4 rounded-lg shadow-sm border">
             <div>
                 <p className="font-semibold text-sm text-gray-500">{t.description}</p>  
-                <p className="text-sm text-gray-500">{t.category}</p>
+                <p className="text-sm text-gray-500">{t.category_id}</p>
                 <p className="text-sm text-gray-500">{t.date}</p>  
             </div>
             <span className="text-right text-green-600 font-semibold">${t.amount.toFixed(2)}</span>
