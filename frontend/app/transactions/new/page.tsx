@@ -8,9 +8,9 @@ export default function NewTransactionPage() {
   const router = useRouter();
   const [form, setForm] = useState({
     description: '',
-    category: '',
     amount: '',
     date: '',
+    category_id: '',
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -23,6 +23,7 @@ export default function NewTransactionPage() {
       await postTransaction({
         ...form,
         amount: parseFloat(form.amount),
+        category_id: parseInt(form.category_id)
       });
       router.push('/transactions');
     } catch (err) {
@@ -45,7 +46,7 @@ export default function NewTransactionPage() {
         <input
           name="category"
           placeholder="Category"
-          value={form.category}
+          value={form.category_id}
           onChange={handleChange}
           required
           className="w-full border border-gray-300 rounded-lg p-2"

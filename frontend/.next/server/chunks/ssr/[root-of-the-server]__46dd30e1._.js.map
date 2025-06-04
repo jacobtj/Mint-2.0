@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 39, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/jacob/Documents/Mint-2.0/frontend/app/page.tsx"],"sourcesContent":["'use client';\r\n\r\nimport Link from 'next/link';\r\n\r\nexport default function Home() {\r\n  return (\r\n    <main className=\"flex min-h-screen flex-col items-center justify-center p-8 bg-gray-50\">\r\n      <h1 className=\"text-4xl font-bold mb-4 text-gray-800\">Mint 2.0</h1>\r\n      <p className=\"text-lg text-gray-600 mb-6\">\r\n        :)\r\n      </p>\r\n      <Link\r\n        href=\"/transactions\"\r\n        className=\"bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition\"\r\n      >\r\n        View Transactions\r\n      </Link>\r\n    </main>\r\n  );\r\n}\r\n"],"names":[],"mappings":";;;;AAEA;AAFA;;;AAIe,SAAS;IACtB,qBACE,8OAAC;QAAK,WAAU;;0BACd,8OAAC;gBAAG,WAAU;0BAAwC;;;;;;0BACtD,8OAAC;gBAAE,WAAU;0BAA6B;;;;;;0BAG1C,8OAAC,4JAAA,CAAA,UAAI;gBACH,MAAK;gBACL,WAAU;0BACX;;;;;;;;;;;;AAKP","debugId":null}}]
-}

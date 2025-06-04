@@ -54,30 +54,6 @@
         "x-next-revalidate-tag-token"
       ]
     },
-    "/transactions": {
-      "experimentalBypassFor": [
-        {
-          "type": "header",
-          "key": "Next-Action"
-        },
-        {
-          "type": "header",
-          "key": "content-type",
-          "value": "multipart/form-data;.*"
-        }
-      ],
-      "initialRevalidateSeconds": false,
-      "srcRoute": "/transactions",
-      "dataRoute": "/transactions.rsc",
-      "allowHeader": [
-        "host",
-        "x-matched-path",
-        "x-prerender-revalidate",
-        "x-prerender-revalidate-if-generated",
-        "x-next-revalidated-tags",
-        "x-next-revalidate-tag-token"
-      ]
-    },
     "/transactions/new": {
       "experimentalBypassFor": [
         {
@@ -101,13 +77,37 @@
         "x-next-revalidated-tags",
         "x-next-revalidate-tag-token"
       ]
+    },
+    "/transactions": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "Next-Action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/transactions",
+      "dataRoute": "/transactions.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
     }
   },
   "dynamicRoutes": {},
   "notFoundRoutes": [],
   "preview": {
-    "previewModeId": "e23a5c68a6e05108ae6e2bb2d1fcd46b",
-    "previewModeSigningKey": "37294637c38bd032a189295d700db425ba3769957709c2d29cbda1e7f7095835",
-    "previewModeEncryptionKey": "1e48c041bd67b20137e2c86021791a2ea19900b02b2baf5059715da1d896c346"
+    "previewModeId": "b956b83cb3efa6e5f9c071e8b2f94db5",
+    "previewModeSigningKey": "37f42b9fffd1a3cce0803b728fb943ad2b5e1b44463496672458825a62d40d10",
+    "previewModeEncryptionKey": "beb41afb37c5dc09263831bf01e55b57d03a6b75cd4c34142c9036d4e9fcc8b1"
   }
 }

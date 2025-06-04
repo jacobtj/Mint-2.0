@@ -81,7 +81,7 @@ export default function TransactionsPage() {
                 <p className="text-sm text-gray-500">{t.category_id}</p>
                 <p className="text-sm text-gray-500">{t.date}</p>  
             </div>
-            <span className="text-right text-green-600 font-semibold">${t.amount.toFixed(2)}</span>
+            <span className="text-right text-green-600 font-semibold">${t.amount}</span>
             <button
               onClick={() => handleDelete(t.id)}
               className="text-red-600 hover:text-red-800 font-semibold"
