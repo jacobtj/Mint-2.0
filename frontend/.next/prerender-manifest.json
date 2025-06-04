@@ -30,7 +30,7 @@
         "x-next-revalidate-tag-token"
       ]
     },
-    "/transactions/new": {
+    "/": {
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -43,8 +43,8 @@
         }
       ],
       "initialRevalidateSeconds": false,
-      "srcRoute": "/transactions/new",
-      "dataRoute": "/transactions/new.rsc",
+      "srcRoute": "/",
+      "dataRoute": "/index.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -78,7 +78,7 @@
         "x-next-revalidate-tag-token"
       ]
     },
-    "/": {
+    "/transactions/new": {
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -91,8 +91,8 @@
         }
       ],
       "initialRevalidateSeconds": false,
-      "srcRoute": "/",
-      "dataRoute": "/index.rsc",
+      "srcRoute": "/transactions/new",
+      "dataRoute": "/transactions/new.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -106,8 +106,8 @@
   "dynamicRoutes": {},
   "notFoundRoutes": [],
   "preview": {
-    "previewModeId": "57900041077e5dba4890f15ba4737930",
-    "previewModeSigningKey": "4d1bae4701198d65e0059ad50d9a7f67bebbe2b5b6c48d01808b0b6ce90e9969",
-    "previewModeEncryptionKey": "96b49aa42e9fdd2b9b0a9e5e16a89b3ec49fcda4bbd39553fcac4d9b49b6e802"
+    "previewModeId": "e23a5c68a6e05108ae6e2bb2d1fcd46b",
+    "previewModeSigningKey": "37294637c38bd032a189295d700db425ba3769957709c2d29cbda1e7f7095835",
+    "previewModeEncryptionKey": "1e48c041bd67b20137e2c86021791a2ea19900b02b2baf5059715da1d896c346"
   }
 }
