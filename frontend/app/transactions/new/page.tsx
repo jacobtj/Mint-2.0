@@ -1,8 +1,9 @@
 'use client';
 
-import { useState } from 'react';
-import { postTransaction } from '@/lib/api';
+import { useState, useEffect } from 'react';
+import { getCategories, postTransaction } from '@/lib/api';
 import { useRouter } from 'next/navigation';
+import { Category } from '@/types/categories';
 
 export default function NewTransactionPage() {
   const router = useRouter();
@@ -13,7 +14,23 @@ export default function NewTransactionPage() {
     category_id: '',
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const [categories, setCategories] = useState<Category[]>([]);
+
+  // Fetch categories on mount
+  useEffect(() => {
+    async function fetchCategories() {
+      try {
+        const data = await getCategories();
+        setCategories(data);
+      } catch (err) {
+        console.error('Failed to fetch categories:', err);
+      }
+    }
+
+    fetchCategories();
+  }, []);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
@@ -32,8 +49,8 @@ export default function NewTransactionPage() {
   };
 
   return (
-    <div className="p-6 max-w-xl mx-auto">
-      <h2 className="text-2xl font-bold mb-6">New Transaction</h2>
+    <div className="bg-white text-black min-h-screen p-6 max-w-xl mx-auto">
+      <h2 className="text-3xl font-semibold mb-6">New Transaction</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <input
           name="description"
@@ -41,16 +58,22 @@ export default function NewTransactionPage() {
           value={form.description}
           onChange={handleChange}
           required
-          className="w-full border border-gray-300 rounded-lg p-2"
+          className="w-full border border-gray-300 rounded-lg p-3"
         />
-        <input
-          name="category"
-          placeholder="Category"
+        <select
+          name="category_id"
           value={form.category_id}
           onChange={handleChange}
           required
-          className="w-full border border-gray-300 rounded-lg p-2"
-        />
+          className="w-full border border-gray-300 rounded-lg p-3 bg-white"
+        >
+          <option value="">Select a category</option>
+          {categories.map((cat) => (
+            <option key={cat.id} value={cat.id}>
+              {cat.name} ({cat.type})
+            </option>
+          ))}
+        </select>
         <input
           name="amount"
           placeholder="Amount"
@@ -58,7 +81,7 @@ export default function NewTransactionPage() {
           value={form.amount}
           onChange={handleChange}
           required
-          className="w-full border border-gray-300 rounded-lg p-2"
+          className="w-full border border-gray-300 rounded-lg p-3"
         />
         <input
           name="date"
@@ -67,20 +90,20 @@ export default function NewTransactionPage() {
           value={form.date}
           onChange={handleChange}
           required
-          className="w-full border border-gray-300 rounded-lg p-2"
+          className="w-full border border-gray-300 rounded-lg p-3"
         />
 
         <div className="flex justify-between items-center mt-6">
           <button
             type="submit"
-            className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
+            className="bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition"
           >
             Add Transaction
           </button>
           <button
             type="button"
             onClick={() => router.push('/transactions')}
-            className="text-gray-500 hover:underline"
+            className="text-blue-600 hover:underline"
           >
             Cancel
           </button>

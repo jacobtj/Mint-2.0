@@ -4,17 +4,22 @@ import Link from 'next/link';
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-8 bg-gray-50">
-      <h1 className="text-4xl font-bold mb-4 text-gray-800">Mint 2.0</h1>
-      <p className="text-lg text-gray-600 mb-6">
-        :)
-      </p>
-      <Link
-        href="/transactions"
-        className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition"
-      >
-        View Transactions
-      </Link>
-    </main>
+     <div className="flex flex-col items-center justify-center min-h-screen bg-white text-black">
+      <h1 className="text-4xl font-bold mb-8">Welcome to Mint 2.0 :)</h1>
+      
+      <div className="flex gap-6">
+        <Link href="/transactions">
+          <button className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700">
+            View Transactions
+          </button>
+        </Link>
+
+        <Link href="/categories">
+          <button className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700">
+            Manage Categories
+          </button>
+        </Link>
+      </div>
+    </div>
   );
 }
