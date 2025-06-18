@@ -3,6 +3,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const transactionRoutes = require('./routes/transactions');
 const categoryRoutes = require('./routes/categories');
+const analyticsRoutes = require('./routes/analytics');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -21,6 +22,7 @@ app.use(bodyParser.json());          // Parse JSON request bodies
 // API Routes
 app.use('/api/transactions', transactionRoutes);
 app.use('/api/categories', categoryRoutes)
+app.use('/api/analytics', analyticsRoutes);
 
 // Root health check
 app.get('/', (req, res) => {
