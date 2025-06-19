@@ -1,7 +1,9 @@
 {
-  "/categories/page": "app/categories/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
   "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/analytics/page": "app/analytics/page.js",
   "/page": "app/page.js",
-  "/transactions/new/page": "app/transactions/new/page.js",
-  "/transactions/page": "app/transactions/page.js"
+  "/categories/page": "app/categories/page.js",
+  "/transactions/page": "app/transactions/page.js",
+  "/transactions/new/page": "app/transactions/new/page.js"
 }

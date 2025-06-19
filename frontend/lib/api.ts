@@ -50,3 +50,15 @@ export async function deleteCategory(id: number): Promise<void> {
   });
   if (!res.ok) throw new Error('Failed to delete category');
 }
+
+export async function getSummary(month: string) {
+  const res = await fetch(`${BASE_URL}/analytics/summary?month=${month}`);
+  if (!res.ok) throw new Error('Failed to fetch summary');
+  return res.json();
+}
+
+export async function getCategorySpending(month: string) {
+  const res = await fetch(`${BASE_URL}/analytics/category-spending?month=${month}`);
+  if (!res.ok) throw new Error('Failed to fetch category spending');
+  return res.json();
+}

@@ -1,7 +1,9 @@
 {
   "/_not-found/page": "/_not-found",
   "/favicon.ico/route": "/favicon.ico",
+  "/analytics/page": "/analytics",
+  "/page": "/",
+  "/categories/page": "/categories",
   "/transactions/page": "/transactions",
-  "/transactions/new/page": "/transactions/new",
-  "/page": "/"
+  "/transactions/new/page": "/transactions/new"
 }
