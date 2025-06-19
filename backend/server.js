@@ -9,7 +9,7 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middleware
-app.use(cors());                     // Allow cross-origin requests, switch to below statement in production
+app.use(cors({origin:"*"}));                     // Allow cross-origin requests, switch to below statement in production
 
 /*
 app.use(cors({

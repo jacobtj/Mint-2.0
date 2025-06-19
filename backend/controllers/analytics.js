@@ -22,14 +22,14 @@ async function getSummary(month) {
 async function getSpendingByCategory(month) {
   try {
     const result = await pool.query(`
-      SELECT c.name AS category, ABS(SUM(t.amount)) AS amount
+      SELECT c.name AS category, SUM(t.amount) AS amount
         FROM transactions t
         JOIN categories c ON t.category_id = c.id
         WHERE TO_CHAR(t.date, 'YYYY-MM') = $1
         GROUP BY c.name
       ORDER BY amount DESC
     `, [month]);
-    return result.rows[0];
+    return result.rows;
   } catch (err) {
     console.error('Error fetching summary:', err);
   }
